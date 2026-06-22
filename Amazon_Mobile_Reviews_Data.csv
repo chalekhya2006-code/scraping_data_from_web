@@ -1,0 +1,9 @@
+import sqlite3
+import pandas as pd
+
+conn = sqlite3.connect("price_tracker.db")
+df = pd.read_sql_query("SELECT product, price, rating, reviews FROM prices", conn)
+conn.close()
+
+print("📱 Mobile Phones Data (Top 10 Records)")
+print(df.head(10).to_markdown(index=False))
